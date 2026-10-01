@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Voice Assistant",
+  "version": "3.0",
+  "minimum_chrome_version": "141",
+  "description": "Controlează browserul și YouTube folosind vocea.",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "offscreen",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Voice Assistant"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
